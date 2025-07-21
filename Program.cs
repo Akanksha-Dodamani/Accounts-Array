@@ -1,4 +1,7 @@
-﻿namespace ArrayOfAccounts
+﻿using System.Security.Principal;
+using System.Text.Json;
+
+namespace ArrayOfAccounts
 {
     internal class Program
     {
@@ -6,7 +9,7 @@
         {
             AccountManagement accountManager = new AccountManagement();
             // show the menu for all other operations other than exit
-            int choice;
+            int choice = 0;
             do
             {
                 Console.WriteLine("What do you wish to do ?");

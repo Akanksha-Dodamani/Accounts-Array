@@ -9,9 +9,13 @@ namespace ArrayOfAccounts
 {
     public class Account
     {
-        public double balance;
-        public string accountNumber, name, accountType;
-        public Account()
+        public double balance { get; set; }
+        public string accountNumber { get; set; }
+        public string name { get; set; }
+        public string accountType { get; set; }
+
+        public Account() { }
+        public void AccountDetailsInput()
         {
             // take account details and validate it
             Console.Write("Account Number: ");
@@ -39,13 +43,14 @@ namespace ArrayOfAccounts
             }
 
             Console.Write("Opening Balance (Minimum amount should be 500): ");
-            while (!double.TryParse(Console.ReadLine(), out balance) || balance < 500)
+            if (double.TryParse(Console.ReadLine(), out double bal) && bal >= 500)
             {
-                Console.Write("Invalid. Re-enter Opening Balance: ");
-                balance = double.Parse(Console.ReadLine());
+                balance = bal;
+                return;
             }
+            Console.Write("Invalid. Re-enter Opening Balance: ");
         }
-        public void studentDetails()
+        public void AccountDetails()
         {
             Console.WriteLine($"Account number: {accountNumber}, Name: {name}, AccountType: {accountType}, Balance: {balance}");
         }
